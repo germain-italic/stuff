@@ -41,7 +41,13 @@ gray() {
 #echo $(green "GREEN MESSAGE")
 #exit 1
 
-#printf "\n\n"
+# how to include these functions in a .sh script
+# - first, download this file in the same directory
+# - then:
+#PWD=$(dirname "$(readlink -f "$0")")
+#source "${PWD}/colorize"
+
+# in the .sh script:
 #echo $(yellow "Sample Yellow Text")
 #echo $(yellow "==================")
 #printf "\n\n"
