@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# todo:
+# - include colors from external list
+# - ask for user input instead of --comment xxxx
 
 black() {
         echo -e "\e[30m${1}\e[0m"
