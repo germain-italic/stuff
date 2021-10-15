@@ -1,0 +1,47 @@
+black() {
+        echo -e "\e[30m${1}\e[0m"
+}
+
+red() {
+        echo -e "\e[31m${1}\e[0m"
+}
+
+green() {
+        echo -e "\e[32m${1}\e[0m"
+}
+
+yellow() {
+        echo -e "\e[33m${1}\e[0m"
+}
+
+blue() {
+        echo -e "\e[34m${1}\e[0m"
+}
+
+magenta() {
+        echo -e "\e[35m${1}\e[0m"
+}
+
+cyan() {
+        echo -e "\e[36m${1}\e[0m"
+}
+
+gray() {
+        echo -e "\e[90m${1}\e[0m"
+}
+
+#black 'BLACK'
+#red 'RED'
+#green 'GREEN'
+#yellow 'YELLOW'
+#blue 'BLUE'
+#magenta 'MAGENTA'
+#cyan 'CYAN'
+#gray 'GRAY'
+#echo $(green "GREEN MESSAGE")
+#exit 1
+
+#printf "\n\n"
+#echo $(yellow "Sample Yellow Text")
+#echo $(yellow "==================")
+#printf "\n\n"
