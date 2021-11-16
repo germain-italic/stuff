@@ -4,6 +4,10 @@
 # ~/.bash_aliases #
 ###################
 
+# wget -O .bash_aliases_tmp https://raw.githubusercontent.com/germain-italic/stuff/main/.bash_aliases
+# cat .bash_aliases_tmp >> ~/.bash_aliases
+
+
 alias l='ls -CF'
 alias ll='ls -alFh'
 
