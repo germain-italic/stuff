@@ -1,0 +1,47 @@
+{
+	"Spacer ---": {
+		"prefix": ["spacer", "/-"],
+		"body": ["// --------------------------------------------------------------------------------"],
+		"description": "Dash line"
+	},
+	"Spacer ___": {
+		"prefix": ["spacer", "/_"],
+		"body": ["// ────────────────────────────────────────────────────────────────────────────────"],
+		"description": "Plain line"
+	},
+	"Spacer ===": {
+		"prefix": ["spacer", "/="],
+		"body": ["// ================================================================================"],
+		"description": "Double line"
+	},
+	"Spacer ***": {
+		"prefix": ["spacer", "/*"],
+		"body": ["// ********************************************************************************"],
+		"description": "Star line"
+	},
+	"Spacer ///": {
+		"prefix": ["spacer", "///"],
+		"body": ["// ////////////////////////////////////////////////////////////////////////////////"],
+		"description": "Slash line"
+	},
+	"Spacer ###": {
+		"prefix": ["spacer", "/#"],
+		"body": ["// ################################################################################"],
+		"description": "Fat line"
+	},
+	"Debug pre": {
+		"prefix": ["pr"],
+		"body": ["echo '<pre>';\nprint_r($1);\necho '</pre>';\n$2"],
+		"description": "html print_r"
+	},
+	"php": {
+		"prefix": ["php"],
+		"body": ["<?php $1 ?>$2"],
+		"description": "<?php ... ?>"
+	},
+	"php endif": {
+		"prefix": ["end, endi, endif"],
+		"body": ["<?php endif ?>\n$2"],
+		"description": "<?php endif ?>"
+	}
+}
