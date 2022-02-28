@@ -21,9 +21,9 @@
 # NAUTILUS_SCRIPT_SELECTED_FILE_PATHS='/home/germain/Téléchargements/ticket.pdf'
 
 
-REMOTE=capture@files.italic.fr
-REMOTE_PATH="/home/capture/www/"
-PREFIX="https://files.italic.fr/"
+REMOTE=user@remote
+REMOTE_PATH="/path/to/folder/"
+PREFIX="https://www.public.url/"
 
 # required dependency:
 # sudo apt-get install xclip
