@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOCAL_DEST="/root/mysql_dumps_all"
-REMOTE_DEST="/home/germain/Tél"échargements/mysql_dumps_all""
+REMOTE_DEST="/home/germain/Sites/mysql_dumps_all"
 
 mkdir -p $LOCAL_DEST
 
