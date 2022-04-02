@@ -58,11 +58,17 @@ read ip
 
 echo "Vous avez saisi l'adresse : $(yellow  $ip)"
 
+printf "\n\n"
+
+echo "Commentaire à mettre dans la règle du firewall :"
+
+read comment
+
 
 if [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
         echo $(green "Adresse IP V4 valide")
 
-        COMMAND="iptables -A INPUT -s ${ip}/32 -p tcp -m multiport --dports 80,443 -m comment --comment xxxx -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT"
+        COMMAND="iptables -A INPUT -s ${ip}/32 -p tcp -m multiport --dports 80,443 -m comment --comment ${comment} -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT"
 
         echo "Voulez-vous executer cette commande ? (oui/non)"
         echo $(red "$COMMAND")
