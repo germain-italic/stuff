@@ -23,7 +23,8 @@
 #   => And you must test all the websites to ensure they work properly
 #   => You have to create a maintenance homepage on a different VM that works for all sites (with SSL)
 # - When the virtual destination is ready, you switch the production IP to the maintenance VM
-# - Use this script to sync home directories and databases to the new VM
+# - Use ../check-503.sh to ensure that your websites return the 503 status
+# - Then run this script to sync home directories and databases to the new VM
 # - Test all the websites to ensure they still work properly, and are up-to-date
 # - Finally, release the production IP the new Plesk VM
 
