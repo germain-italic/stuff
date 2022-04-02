@@ -8,7 +8,7 @@
 
 
 # colorize: get it from
-# https://raw.githubusercontent.com/Germain-Italic/stuff/main/colorize
+# https://raw.githubusercontent.com/Germain-Italic/stuff/admin/colorize
 # todo: check if file exists, if not, download it
 PWD=$(dirname "$(readlink -f "$0")")
 source "${PWD}/colorize"
