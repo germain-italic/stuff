@@ -8,6 +8,7 @@ Then it will read your rotation intervals (name and quantity) from `/etc/rsnapsh
 WHICH BACKUP POINT WOULD YOU LIKE TO DELETE?
 (Please type only one)
 mysnapshot  myothersnapshot	mythirdsnapshot  anothersnapshot
+
 myothersnapshot
 
 DELETING myothersnapshot
