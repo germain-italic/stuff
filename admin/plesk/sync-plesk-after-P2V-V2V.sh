@@ -46,6 +46,7 @@ main() {
         ################################################
         
         #import_homedirs_to_destination
+	#check_backwards_homedirs
         #import_source_certificates_on_destination
         #dump_source_databases
         #import_source_databases_on_destination
@@ -58,17 +59,39 @@ main() {
 
 import_homedirs_to_destination() {
 
-    ssh root@${source} '/usr/sbin/plesk db -e "USE psa; SELECT home FROM sys_users;" > /root/homedirs.txt'
-    scp root@${source}:/root/homedirs.txt /root/homedirs.txt
+    mkdir "$now"
+
+
+    ssh -p ${port} root@${source} '/usr/sbin/plesk db -e "USE psa; SELECT home FROM sys_users;" > /root/homedirs.txt'
+    scp -P ${port} root@${source}:/root/homedirs.txt /root/homedirs.txt
     sed -i '1d' /root/homedirs.txt
 
     n=1
     while read line; do
-        echo "Line No. $n : $line"
+        echo -e "\nLine No. $n : $line" >> "${now}/${source}.txt"
         n=$((n+1))
-        rsync -avzu root@${source}:${line}/ $line
+        rsync -avzun -e "ssh -p ${port}" "root@${source}:${line}/" "$line" >> "${now}/${source}.txt"
     done < /root/homedirs.txt
 }
+
+
+
+
+check_backwards_homedirs() {
+    mkdir "$now"
+
+    #ssh -p ${port} root@${source} '/usr/sbin/plesk db -e "USE psa; SELECT home FROM sys_users;" > /root/homedirs.txt'
+    #scp -P ${port} root@${source}:/root/homedirs.txt /root/homedirs.txt
+    #sed -i '1d' /root/homedirs.txt
+
+    n=1
+    while read line; do
+        echo -e "\nLine No. $n : $line" >> "${now}/${source}.txt"
+        n=$((n+1))
+        rsync -rvn --size-only "$line" -e "ssh -p ${port}" "root@${source}:${line}/" >> "${now}/${source}.txt"
+    done < /root/homedirs.txt
+}
+
 
 
 
@@ -185,13 +208,13 @@ export_plesk_vhosts_to_apache_maintenance_vhosts() {
 
         # http
         echo "<VirtualHost *:80>" > $CONF
-	    echo "    ServerName $domain" >> $CONF
+	echo "    ServerName $domain" >> $CONF
         echo "    ServerAlias www.${domain}" >> $CONF
         if [ ! -z "$SERVERALIAS" ]
         then
 	    echo "    $SERVERALIAS" >> $CONF
         fi
-	    echo "    DocumentRoot /var/www/html" >> $CONF
+	echo "    DocumentRoot /var/www/html" >> $CONF
         echo "</VirtualHost>" >> $CONF
 
 
