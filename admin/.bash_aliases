@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=14
+export VERSION_ALIASES=15
 
 # prefered editor
 export EDITOR="nano"
@@ -56,37 +56,36 @@ alias ln='ln -i'
 alias rm='rm -i'
 alias cpp='rsync -ah --info=progress2'
 
-# duplicate file, usage:
+# duplicate a file/folder or create a .bak copy, usage:
 # bak ~/folder/subfolder/file.txt
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
     [[ -z $1 ]] && echo "Missing source filename" && return
-    [[ ! -f $1 ]] && echo "$1 not found" && return
+    [[ ! -f $1 ]] && [[ ! -d $1 ]] && echo "$1 not found" && return
     
     _path=$(dirname -- "$1")
     _target="${_path%/}/$1.bak"
     
-    [[ -d $_target ] && echo "$_target already exists" && return
-    [[ -f $_target ] && echo "$_target already exists" && return
-    
-    cp -rp "$1" "$_target"
-    l "${_path%/}"
-}
-duplicate_file(){
-    [[ -z "$1" ]] && echo "Missing source filename" && return
-    [[ ! -f $1 ]] && echo "$1 not found" && return
-    [[ -z "$2" ]] && echo "Missing destination filename" && return
-    
-    _path=$(dirname -- "$1")
-    _target="${_path%/}/$2"
-    
-    [[ -d $_target ] && echo "$_target already exists" && return
-    [[ -f $_target ] && echo "$_target already exists" && return
+    [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
     
     cp -rp "$1" "$_target"
     l "${_path%/}"
 }
 alias bak='backup_file $1'
+
+duplicate_file(){
+    [[ -z $1 ]] && echo "Missing source filename" && return
+    [[ ! -f $1 ]] && [[ ! -d $1 ]] && echo "$1 not found" && return
+    [[ -z $2 ]] && echo "Missing destination filename" && return
+
+    _path=$(dirname -- "$1")
+    _target="${_path%/}/$2"
+
+    [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
+
+    cp -rp "$1" "$_target"
+    l "${_path%/}"
+}
 alias dup='duplicate_file $1 $2'
 
 
