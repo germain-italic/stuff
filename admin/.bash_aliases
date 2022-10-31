@@ -2,7 +2,7 @@
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES=1
+export VERSION_ALIASES=2
 
 # prefered editor
 export EDITOR="nano"
@@ -13,7 +13,7 @@ alias sudo='sudo '
 
 # aliases mngmt
 alias als='source ~/.bash_aliases'
-alias al='echo $VERSION_ALIASES && compgen -a'
+alias al='echo "Version des alias : $VERSION_ALIASES" && echo "Liste des commandes disponibles :" && compgen -a'
 alias alias_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
 alias aliases='alias_sync && als && al'
 
