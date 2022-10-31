@@ -62,13 +62,13 @@ alias cpp='rsync -ah --info=progress2'
 backup_file(){
     _path=$(dirname -- "$1")
     _target="${_path%/}/$1.bak"
-    mv -- "$1" "$_target"
+    cp -rp "$1" "$_target"
     l "${_path%/}"
 }
 duplicate_file(){
     _path=$(dirname -- "$1")
     _target="${_path%/}/$2"
-    mv -- "$1" "$_target"
+    cp -rp "$1" "$_target"
     l "${_path%/}"
 }
 alias bak='backup_file $1'
