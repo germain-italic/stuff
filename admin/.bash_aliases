@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=15
+export VERSION_ALIASES=16
 
 # prefered editor
 export EDITOR="nano"
@@ -75,17 +75,19 @@ backup_file(){
 alias bak='backup_file $1'
 
 duplicate_file(){
-    [[ -z $1 ]] && echo "Missing source filename" && return
-    [[ ! -f $1 ]] && [[ ! -d $1 ]] && echo "$1 not found" && return
+    _1=$(echo $1 | sed 's:/*$::')
+    _2=$(echo $1 | sed 's:/*$::')
+
+    [[ -z $_1 ]] && echo "Missing source filename" && return
+    [[ ! -f $_1 ]] && [[ ! -d $_1 ]] && echo "$_1 not found" && return
     [[ -z $2 ]] && echo "Missing destination filename" && return
 
-    _path=$(dirname -- "$1")
-    _path=$(echo $_path | sed 's:/*$::')
-    _target="${_path%/}/$2"
+    _path=$(dirname -- "$_1")
+    _target="${_path%/}/$_2"
 
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
 
-    cp -rp "$1" "$_target"
+    cp -rp "$_1" "$_target"
     l "${_path%/}"
 }
 alias dup='duplicate_file $1 $2'
