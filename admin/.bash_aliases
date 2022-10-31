@@ -7,12 +7,12 @@
 # fi
 #
 # how to test using Debian WSL
-# cp /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases && source ~/.bash_aliases
-export ALIASES_REPO_CLONE="/mnt/c/Users/germain/Documents/Sites"
-aliases_test_germain="cp $ALIASES_REPO_CLONE/stuff/admin/.bash_aliases ~/.bash_aliases && source ~/.bash_aliases"
+# germain@germain-xps:~$ ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases
+# ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases
+# germain@germain-xps:~$ source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES="16"
+export VERSION_ALIASES=18
 
 # prefered editor
 export EDITOR="nano"
@@ -22,7 +22,7 @@ export VISUAL="nano"
 alias sudo='sudo '
 
 # aliases mngmt
-alias ale='nano  ~/.bash_aliases'
+alias ale='$EDITOR  ~/.bash_aliases'
 alias als='source ~/.bash_aliases'
 alias al='echo -n "Version des alias :" && echo -en "\e[1;31m $VERSION_ALIASES \e[0m" && echo -n "(tapez" && echo -en "\e[1;31m aliases \e[0m" && echo "pour mettre à jour)" && echo -e "\033[3mListe des commandes disponibles :\033[m" && compgen -a'
 alias aliases_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
@@ -37,9 +37,11 @@ alias lz='ls --human-readable --size -1 -S --classify'
 
 # shortcuts - navigation
 alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../'
+alias ......='cd ../../../../'
+alias .......='cd ../../../../../'
 
 # shortcuts - common
 alias h='history|grep'
@@ -74,19 +76,16 @@ backup_file(){
     _target="${_path%/}/$_filename.bak"
     
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
-    
-    echo "1 : $_1"
-    echo "_path : $_path"
-    echo "_target : $_target"
 
     cp -rp "$_1" "$_target"
-    l "${_path%/}"
+    cd $_path
+    l
 }
 alias bak='backup_file $1'
 
 duplicate_file(){
     _1=$(echo $1 | sed 's:/*$::')
-    _2=$(echo $1 | sed 's:/*$::')
+    _2=$(echo $2 | sed 's:/*$::')
 
     [[ -z $_1 ]] && echo "Missing source filename" && return
     [[ ! -f $_1 ]] && [[ ! -d $_1 ]] && echo "$_1 not found" && return
@@ -128,3 +127,4 @@ alias bklogs=backuplog
 # - https://unix.stackexchange.com/a/132236
 # - https://linuxize.com/post/bash-check-if-file-exists/
 # - https://www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty/
+# - https://askubuntu.com/questions/1010310/cutting-all-the-characters-after-the-last
