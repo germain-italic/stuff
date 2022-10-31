@@ -1,8 +1,13 @@
 # how to install
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
+#
+# make sure you have added or uncommented this in your ~/.bashrc file :
+# if [ -f ~/.bash_aliases ]; then
+# . ~/.bash_aliases
+# fi
 
 # update version
-export VERSION_ALIASES=6
+export VERSION_ALIASES=7
 
 # prefered editor
 export EDITOR="nano"
