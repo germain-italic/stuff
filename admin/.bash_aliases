@@ -2,7 +2,7 @@
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES=2
+export VERSION_ALIASES=3
 
 # prefered editor
 export EDITOR="nano"
@@ -54,10 +54,17 @@ alias monip="curl ipinfo.io/ip && echo "
 alias pass="openssl rand -base64 20"
 
 # web
-alias vhosts='cd /var/www/vhosts'
+alias sites='cd /etc/apache2/sites-available && ll'
+alias vhosts='cd /var/www/vhosts && ll'
 alias maillog='tail -f /var/log/mail*'
+alias mailog=maillog
+alias mailogs=maillog
 alias weblog='tail -f /var/www/vhosts/system/*/logs/*access*log'
+alias weblogs=weblog
 alias backuplog='cd /var/log/plesk/PMM && ll'
+alias backuplogs=backuplog
+alias bklog=backuplog
+alias bklogs=backuplog
 
 # inspired by:
 # - https://xy2z.io/posts/2020-syncing-aliases/
