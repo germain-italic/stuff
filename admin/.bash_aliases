@@ -5,9 +5,14 @@
 # if [ -f ~/.bash_aliases ]; then
 # . ~/.bash_aliases
 # fi
+#
+# how to test using Debian WSL
+# cp /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases && source ~/.bash_aliases
+export ALIASES_REPO_CLONE="/mnt/c/Users/germain/Documents/Sites"
+aliases_test_germain="cp $ALIASES_REPO_CLONE/stuff/admin/.bash_aliases ~/.bash_aliases && source ~/.bash_aliases"
 
 # update version
-export VERSION_ALIASES=16
+export VERSION_ALIASES="16"
 
 # prefered editor
 export EDITOR="nano"
@@ -20,8 +25,8 @@ alias sudo='sudo '
 alias ale='nano  ~/.bash_aliases'
 alias als='source ~/.bash_aliases'
 alias al='echo -n "Version des alias :" && echo -en "\e[1;31m $VERSION_ALIASES \e[0m" && echo -n "(tapez" && echo -en "\e[1;31m aliases \e[0m" && echo "pour mettre à jour)" && echo -e "\033[3mListe des commandes disponibles :\033[m" && compgen -a'
-alias alias_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
-alias aliases='alias_sync && als && al'
+alias aliases_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
+alias aliases='aliases_sync && als && al'
 
 # shortcuts - lists
 alias l='ls -F --color=auto --group-directories-first'
@@ -61,14 +66,19 @@ alias cpp='rsync -ah --info=progress2'
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
     _1=$(echo $1 | sed 's:/*$::')
+    _filename=$(echo $_1 | sed 's|.*/||')
     [[ -z $_1 ]] && echo "Missing source filename" && return
     [[ ! -f $_1 ]] && [[ ! -d $_1 ]] && echo "$_1 not found" && return
     
     _path=$(dirname -- "$_1")
-    _target="${_path%/}/$_1.bak"
+    _target="${_path%/}/$_filename.bak"
     
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
     
+    echo "1 : $_1"
+    echo "_path : $_path"
+    echo "_target : $_target"
+
     cp -rp "$_1" "$_target"
     l "${_path%/}"
 }
@@ -116,3 +126,5 @@ alias bklogs=backuplog
 # inspired by:
 # - https://xy2z.io/posts/2020-syncing-aliases/
 # - https://unix.stackexchange.com/a/132236
+# - https://linuxize.com/post/bash-check-if-file-exists/
+# - https://www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty/
