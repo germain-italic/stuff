@@ -62,6 +62,7 @@ alias rm='rm -I --preserve-root'
 alias mv='mv -i'
 alias ln='ln -i'
 alias rm='rm -i'
+alias cp='cp -rp'
 alias cpp='rsync -ah --info=progress2'
 
 # duplicate a file/folder or create a .bak copy, usage:
