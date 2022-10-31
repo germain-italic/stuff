@@ -51,8 +51,9 @@ alias tar='tar -czvf $1'
 alias count='find . -type f | wc -l'
 alias rel='cat /etc/*release'
 
-# redefine commands
+# redefine commands / fix typos
 alias chown='chown --preserve-root'
+alias chwon='chown'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias mkdir='mkdir -p'
