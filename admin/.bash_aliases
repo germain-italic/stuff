@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=9
+export VERSION_ALIASES=10
 
 # prefered editor
 export EDITOR="nano"
@@ -63,11 +63,13 @@ backup_file(){
     _path=$(dirname -- "$1")
     _target="${_path%/}/$1.bak"
     mv -- "$1" "$_target"
+    l "${_path%/}"
 }
 duplicate_file(){
     _path=$(dirname -- "$1")
     _target="${_path%/}/$2"
     mv -- "$1" "$_target"
+    l "${_path%/}"
 }
 alias bak='backup_file $1'
 alias dup='duplicate_file $1 $2'
