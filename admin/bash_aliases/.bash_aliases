@@ -1,5 +1,5 @@
 # how to install
-# wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
+# wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/bash_aliases/.bash_aliases && source ~/.bash_aliases
 #
 # make sure you have added or uncommented this in your ~/.bashrc file :
 # if [ -f ~/.bash_aliases ]; then
@@ -7,8 +7,8 @@
 # fi
 #
 # how to test using Debian WSL
-# germain@germain-xps:~$ ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases
-# ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/.bash_aliases ~/.bash_aliases
+# germain@germain-xps:~$ ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases
+# ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases
 # germain@germain-xps:~$ source ~/.bash_aliases
 
 # update version
@@ -64,7 +64,9 @@ alias rm='rm -i'
 alias cpp='rsync -ah --info=progress2'
 
 # duplicate a file/folder or create a .bak copy, usage:
+# bak [source]
 # bak ~/folder/subfolder/file.txt
+# dup [source destination]
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
     _1=$(echo $1 | sed 's:/*$::')
