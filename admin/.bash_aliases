@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=7
+export VERSION_ALIASES=8
 
 # prefered editor
 export EDITOR="nano"
@@ -43,6 +43,9 @@ alias count='find . -type f | wc -l'
 alias rel='cat /etc/*release'
 
 # redefine commands
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 alias mkdir='mkdir -p'
 alias grep='grep --color'
 alias ping='ping -c 3'
@@ -50,10 +53,17 @@ alias rm='rm -I --preserve-root'
 alias mv='mv -i'
 alias ln='ln -i'
 alias rm='rm -i'
-alias cp='rsync -ah --info=progress2'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+alias cpp='rsync -ah --info=progress2'
+
+# duplicate file, usage:
+# dup ~/folder/subfolder/file.txt file.sh
+dup(){
+    _path=$(dirname -- "$1")
+    _target="${_path%/}/$2"
+    mv -- "$1" "$_target"
+}
+
+
 
 # variables
 alias path='echo -e ${PATH//:/\\n}'
@@ -76,3 +86,4 @@ alias bklogs=backuplog
 
 # inspired by:
 # - https://xy2z.io/posts/2020-syncing-aliases/
+# - https://unix.stackexchange.com/a/132236
