@@ -64,6 +64,7 @@ backup_file(){
     [[ ! -f $1 ]] && [[ ! -d $1 ]] && echo "$1 not found" && return
     
     _path=$(dirname -- "$1")
+    _path=$(echo $_path | sed 's:/*$::')
     _target="${_path%/}/$1.bak"
     
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
@@ -79,6 +80,7 @@ duplicate_file(){
     [[ -z $2 ]] && echo "Missing destination filename" && return
 
     _path=$(dirname -- "$1")
+    _path=$(echo $_path | sed 's:/*$::')
     _target="${_path%/}/$2"
 
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
