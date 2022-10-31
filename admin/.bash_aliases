@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=10
+export VERSION_ALIASES=11
 
 # prefered editor
 export EDITOR="nano"
