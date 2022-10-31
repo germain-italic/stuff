@@ -25,7 +25,7 @@ alias sudo='sudo '
 alias ale='$EDITOR  ~/.bash_aliases'
 alias als='source ~/.bash_aliases'
 alias al='echo -n "Version des alias :" && echo -en "\e[1;31m $VERSION_ALIASES \e[0m" && echo -n "(tapez" && echo -en "\e[1;31m aliases \e[0m" && echo "pour mettre à jour)" && echo -e "\033[3mListe des commandes disponibles :\033[m" && compgen -a'
-alias aliases_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
+alias aliases_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/bash_aliases/.bash_aliases'
 alias aliases='aliases_sync && als && al'
 
 # shortcuts - lists
@@ -66,7 +66,7 @@ alias cpp='rsync -ah --info=progress2'
 # duplicate a file/folder or create a .bak copy, usage:
 # bak [source]
 # bak ~/folder/subfolder/file.txt
-# dup [source destination]
+# dup [source] [destination]
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
     _1=$(echo $1 | sed 's:/*$::')
