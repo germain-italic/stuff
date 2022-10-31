@@ -60,16 +60,16 @@ alias cpp='rsync -ah --info=progress2'
 # bak ~/folder/subfolder/file.txt
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
-    [[ -z $1 ]] && echo "Missing source filename" && return
-    [[ ! -f $1 ]] && [[ ! -d $1 ]] && echo "$1 not found" && return
+    _1=$(echo $1 | sed 's:/*$::')
+    [[ -z $_1 ]] && echo "Missing source filename" && return
+    [[ ! -f $_1 ]] && [[ ! -d $_1 ]] && echo "$_1 not found" && return
     
-    _path=$(dirname -- "$1")
-    _path=$(echo $_path | sed 's:/*$::')
-    _target="${_path%/}/$1.bak"
+    _path=$(dirname -- "$_1")
+    _target="${_path%/}/$_1.bak"
     
     [[ -d $_target ]] || [[ -f $_target ]] && echo "$_target already exists" && return
     
-    cp -rp "$1" "$_target"
+    cp -rp "$_1" "$_target"
     l "${_path%/}"
 }
 alias bak='backup_file $1'
