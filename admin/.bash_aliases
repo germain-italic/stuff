@@ -1,3 +1,9 @@
+# how to install
+# wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
+
+# update version
+export VERSION_ALIASES=1
+
 # prefered editor
 export EDITOR="nano"
 export VISUAL="nano"
@@ -7,8 +13,9 @@ alias sudo='sudo '
 
 # aliases mngmt
 alias als='source ~/.bash_aliases'
-alias aliases='als && al'
-alias al='compgen -a'
+alias al='echo $VERSION_ALIASES && compgen -a'
+alias alias_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
+alias aliases='alias_sync && als && al'
 
 # shortcuts - lists
 alias l='ls -F --color=auto --group-directories-first'
@@ -51,3 +58,6 @@ alias vhosts='cd /var/www/vhosts'
 alias maillog='tail -f /var/log/mail*'
 alias weblog='tail -f /var/www/vhosts/system/*/logs/*access*log'
 alias backuplog='cd /var/log/plesk/PMM && ll'
+
+# inspired by:
+# - https://xy2z.io/posts/2020-syncing-aliases/
