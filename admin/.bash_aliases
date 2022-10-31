@@ -7,7 +7,7 @@
 # fi
 
 # update version
-export VERSION_ALIASES=8
+export VERSION_ALIASES=9
 
 # prefered editor
 export EDITOR="nano"
@@ -56,12 +56,20 @@ alias rm='rm -i'
 alias cpp='rsync -ah --info=progress2'
 
 # duplicate file, usage:
+# bak ~/folder/subfolder/file.txt
 # dup ~/folder/subfolder/file.txt file.sh
-dup(){
+backup_file(){
+    _path=$(dirname -- "$1")
+    _target="${_path%/}/{$1}.bak"
+    mv -- "$1" "$_target"
+}
+duplicate_file(){
     _path=$(dirname -- "$1")
     _target="${_path%/}/$2"
     mv -- "$1" "$_target"
 }
+alias bak='backup_file $1'
+alias dup='duplicate_file $1 $2'
 
 
 
