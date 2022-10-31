@@ -2,7 +2,7 @@
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES=5
+export VERSION_ALIASES=6
 
 # prefered editor
 export EDITOR="nano"
@@ -35,6 +35,7 @@ alias h='history|grep'
 alias untar='tar -zxvf $1'
 alias tar='tar -czvf $1'
 alias count='find . -type f | wc -l'
+alias rel='cat /etc/*release'
 
 # redefine commands
 alias mkdir='mkdir -p'
