@@ -17,6 +17,7 @@ export VISUAL="nano"
 alias sudo='sudo '
 
 # aliases mngmt
+alias ale='nano  ~/.bash_aliases'
 alias als='source ~/.bash_aliases'
 alias al='echo -n "Version des alias :" && echo -en "\e[1;31m $VERSION_ALIASES \e[0m" && echo -n "(tapez" && echo -en "\e[1;31m aliases \e[0m" && echo "pour mettre à jour)" && echo -e "\033[3mListe des commandes disponibles :\033[m" && compgen -a'
 alias alias_sync='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases'
@@ -60,7 +61,7 @@ alias cpp='rsync -ah --info=progress2'
 # dup ~/folder/subfolder/file.txt file.sh
 backup_file(){
     _path=$(dirname -- "$1")
-    _target="${_path%/}/{$1}.bak"
+    _target="${_path%/}/$1.bak"
     mv -- "$1" "$_target"
 }
 duplicate_file(){
