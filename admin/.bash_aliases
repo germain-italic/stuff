@@ -2,7 +2,7 @@
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/.bash_aliases && source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES=4
+export VERSION_ALIASES=5
 
 # prefered editor
 export EDITOR="nano"
@@ -19,7 +19,9 @@ alias aliases='alias_sync && als && al'
 
 # shortcuts - lists
 alias l='ls -F --color=auto --group-directories-first'
+alias ld='ls -Ftr --color=auto --group-directories-first'
 alias ll="ls -lhaF --color=always --group-directories-first | awk '{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr(\$1,i+2,1)~/[rwxst]/)*2^(8-i));};j=4;for(i=4;i<=10;i+=3){;s+=((substr(\$1,i,1)~/[stST]/)*j);j/=2;};if(k){;printf(\"%0o%0o \",s,k);};print;}'"
+alias lld="ls -lhaFtr --color=always --group-directories-first | awk '{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr(\$1,i+2,1)~/[rwxst]/)*2^(8-i));};j=4;for(i=4;i<=10;i+=3){;s+=((substr(\$1,i,1)~/[stST]/)*j);j/=2;};if(k){;printf(\"%0o%0o \",s,k);};print;}'"
 alias lz='ls --human-readable --size -1 -S --classify'
 
 # shortcuts - navigation
