@@ -139,7 +139,7 @@ alias backuplogs=backuplog
 alias bklog=backuplog
 alias bklogs=backuplog
 finduseragents () {
-    awk -F\" '($2 ~ "^GET /"){print $6}' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less
+    awk -F\" '($2 ~ "^GET /"){print $6}' /var/www/vhosts/system/*/logs/*access*log|sort|uniq -c | less
 }
 alias uas=finduseragents
 
