@@ -126,7 +126,7 @@ alias backuplog='cd /var/log/plesk/PMM && ll'
 alias backuplogs=backuplog
 alias bklog=backuplog
 alias bklogs=backuplog
-alias useragents='awk -F\" '($2 ~ "^GET /"){print $6}' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less'
+alias useragents='awk -F\" \'($2 ~ "^GET /"){print $6}\' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less'
 alias uas=useragents
 
 # inspired by:
