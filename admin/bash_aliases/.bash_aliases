@@ -126,6 +126,8 @@ alias backuplog='cd /var/log/plesk/PMM && ll'
 alias backuplogs=backuplog
 alias bklog=backuplog
 alias bklogs=backuplog
+alias useragents='awk -F\" '($2 ~ "^GET /"){print $6}' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less'
+alias uas=useragents
 
 # inspired by:
 # - https://xy2z.io/posts/2020-syncing-aliases/
@@ -133,3 +135,4 @@ alias bklogs=backuplog
 # - https://linuxize.com/post/bash-check-if-file-exists/
 # - https://www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty/
 # - https://askubuntu.com/questions/1010310/cutting-all-the-characters-after-the-last
+# - https://snippets.aktagon.com/snippets/807-how-to-extract-all-unique-user-agents-from-an-apache-log-with-awk
