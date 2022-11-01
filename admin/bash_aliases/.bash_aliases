@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # how to install
 # wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/bash_aliases/.bash_aliases && source ~/.bash_aliases
 #
@@ -10,15 +12,25 @@
 # germain@germain-xps:~$ ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases
 # ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases
 # germain@germain-xps:~$ source ~/.bash_aliases
+#
+# if your shell returns multiple errors like: -bash: $'\r': command not found
+# run the command below to fix your line endings
+# sed -i 's/\r//' ~/.bash_aliases
 
-# update version
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# change the version of this file after editing it
 export VERSION_ALIASES=19
 
-# prefered editor
+# my prefered editor
 export EDITOR="nano"
 export VISUAL="nano"
 
-# allow sudo with aliases
+# allow sudo to work with aliases
 alias sudo='sudo '
 
 # aliases mngmt
@@ -71,7 +83,7 @@ alias cpp='rsync -ah --info=progress2'
 # bak ~/folder/subfolder/file.txt
 # dup [source] [destination]
 # dup ~/folder/subfolder/file.txt file.sh
-backup_file(){
+backup_file () {
     _1=$(echo $1 | sed 's:/*$::')
     _filename=$(echo $_1 | sed 's|.*/||')
     [[ -z $_1 ]] && echo "Missing source filename" && return
@@ -88,7 +100,7 @@ backup_file(){
 }
 alias bak='backup_file $1'
 
-duplicate_file(){
+duplicate_file () {
     _1=$(echo $1 | sed 's:/*$::')
     _2=$(echo $2 | sed 's:/*$::')
 
@@ -111,8 +123,8 @@ alias dup='duplicate_file $1 $2'
 # variables
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%d-%m-%Y %T"'
-alias monip="curl ipinfo.io/ip && echo "
-alias pass="openssl rand -base64 20"
+alias monip='curl ipinfo.io/ip && echo '
+alias pass='openssl rand -base64 20'
 
 # web
 alias sites='cd /etc/apache2/sites-available && ll'
@@ -126,8 +138,10 @@ alias backuplog='cd /var/log/plesk/PMM && ll'
 alias backuplogs=backuplog
 alias bklog=backuplog
 alias bklogs=backuplog
-alias useragents='awk -F\" \'($2 ~ "^GET /"){print $6}\' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less'
-alias uas=useragents
+finduseragents () {
+    awk -F\" '($2 ~ "^GET /"){print $6}' /var/www/vhosts/system/*/logs/*access*log|sort|uniq | less
+}
+alias uas=finduseragents
 
 # inspired by:
 # - https://xy2z.io/posts/2020-syncing-aliases/
@@ -136,3 +150,5 @@ alias uas=useragents
 # - https://www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty/
 # - https://askubuntu.com/questions/1010310/cutting-all-the-characters-after-the-last
 # - https://snippets.aktagon.com/snippets/807-how-to-extract-all-unique-user-agents-from-an-apache-log-with-awk
+# - https://stackoverflow.com/questions/6473766/syntax-error-near-unexpected-token-in-r
+# - https://askubuntu.com/questions/1170928/syntax-error-near-unexpected-token-after-editing-bashrc
