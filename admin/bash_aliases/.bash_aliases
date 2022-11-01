@@ -12,7 +12,7 @@
 # germain@germain-xps:~$ source ~/.bash_aliases
 
 # update version
-export VERSION_ALIASES=18
+export VERSION_ALIASES=19
 
 # prefered editor
 export EDITOR="nano"
