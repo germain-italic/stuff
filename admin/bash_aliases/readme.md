@@ -1,7 +1,7 @@
 # Compatibility
 
-- Tested on Debian 11 (Bullseye)
-- The [web] section is intended for Plesk 19 (Obsidian)
+- Tested on Debian 11 (Bullseye) native and WSL
+- The [web] section is intended for Plesk 18 (Obsidian)
 
 
 # How to install
@@ -11,17 +11,11 @@
 
 # How to test
 
-Use `al`
-The version number will bump in red:
+Run `al` to show the version and the list of aliases.
+The version number will show up:
 
 ![](https://files.italic.fr/debian_Bw8VE9kj1d.png)
 
-```
-germain@xps:~/test$ al
-Version des alias : 18 (tapez aliases pour mettre à jour)
-Liste des commandes disponibles :
-(...)
-```
 
 To make the bash_aliases addons persistent, make sure that you have added or uncommented this in your `~/.bashrc`  file, otherwie the aliases will be reset at every reconnection.
 
@@ -37,15 +31,35 @@ If you use Windows and you want to test into a real distro, [install Linux on Wi
 
 E.g. if you have cloned this repo inside `C:\Users\germain\Documents\Sites\stuff`, the symlink in the guest distro will be created like this:
 
-`ln -s /mnt/c/Users/germain/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases`
+`ln -s /mnt/c/Users/$USER/Documents/Sites/stuff/admin/bash_aliases/.bash_aliases ~/.bash_aliases`
 
 Then source the file once:
 `source ~/.bash_aliases`
 
 
+If your shell returns multiple errors like: `-bash: $'\r': command not found`, run the command below to fix your line endings:
+`sed -i 's/\r//' ~/.bash_aliases`
+
+
+# Groups and help
+
+To show the list of aliases, run `all`.
+Aliases are grouped by categories.
+To create a new category called mygroup, create a comment like:
+`# group: mygroup`
+
+To show a help comment / description after the alias name in `all`,
+write a single-line comment immediately above the alias definition:
+
+```
+# helper text for alias foo
+alias foo=''
+```
+
+
 # How to update (re-sync from repo) the aliases to a newer version?
 
-- Remote system: simply run the `aliases` command to re-download, override, and re-source the aliases.
+- Remote system: simply run the `aliases` command to re-download from GitHub, override, and re-source the aliases.
 - Local (using a symlink) : run the `als` command to re-source the aliases
 
 
@@ -79,10 +93,10 @@ bak foo
 foo not found
 
 # create .bak file and list current dir content
-bak foo.file 
+bak foo.file
 foodir/      foo.file      foo.file.bak
 
-# create .bak folder and list current dir content      
+# create .bak folder and list current dir content
 bak foodir/
 foodir/  foodir.bak/  foo.file  foo.file.bak
 
@@ -120,7 +134,7 @@ dup
 Missing source filename
 
 # dest filename is required
-dup foo.file 
+dup foo.file
 Missing destination filename
 
 # copy file in same folder with new name
