@@ -89,7 +89,7 @@ styles_shortcuts () {
 
 aliases_help () {
     echo "This is ~/.bash_aliases file version: ${tmagenta}$VERSION_ALIASES${_tmagenta}."
-    echo "Type ${thighlight}algh${_thighlight} to re-sync from GitHub, ${thighlight}ale${_thighlight} to edit, ${thighlight}als${_thighlight} to source, ${thighlight}all${_thighlight} for help."
+    echo "Type ${thighlight}aliases${_thighlight} to re-sync from GitHub, ${thighlight}ale${_thighlight} to edit, ${thighlight}als${_thighlight} to source, ${thighlight}all${_thighlight} for help."
     echo ""
     echo "List of available aliases:"
     echo "--------------------------"
@@ -141,7 +141,7 @@ alias als='source ~/.bash_aliases && echo "Aliases re-sourced. Type ${thighlight
 alias all=aliases_help
 alias al=all
 # download aliases from GitHub, source the local file, show all aliases and local file version
-alias algh='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/bash_aliases/.bash_aliases && als && al'
+alias aliases='wget -O ~/.bash_aliases https://raw.githubusercontent.com/germain-italic/stuff/main/admin/bash_aliases/.bash_aliases && als && al'
 
 
 ################
