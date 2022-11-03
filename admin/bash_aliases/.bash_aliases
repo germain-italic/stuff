@@ -154,6 +154,11 @@ alias l='ls -Fh --color=auto --group-directories-first'
 alias ld='ls -Frth --color=auto --group-directories-first'
 # quick list (sorted by size)
 alias lz='ls --human-readable --size -1 -S --classify --color=auto'
+filesize_by_extension () {
+    find . -name '*' -type f -printf '%b.%f\0' | awk -F . -v RS='\0' '{if (NF==2) $(NF+1)=" "; s[$NF] += $1; n[$NF]++} END {for (e in s) printf "%15d %6d  %s\n", s[e]*512, n[e], e}' | sort -rn | numfmt --to=iec-i --suffix=B
+}
+# filesize by extensions
+alias fz=filesize_by_extension
 # detailed list (alphabetical) [optional filename]
 alias ll='ls -lahF --color=auto --group-directories-first'
 # detailed list (sorted by date) [optional filename]
@@ -367,6 +372,7 @@ alias logUA=finduseragents
 # https://stackoverflow.com/questions/16623835/remove-a-fixed-prefix-suffix-from-a-string-in-bash
 # https://bytefreaks.net/gnulinux/bash/how-to-remove-prefix-and-suffix-from-a-variable-in-bash
 # https://serverfault.com/questions/126407/display-n-characters-as-newlines-when-using-tail
+# https://unix.stackexchange.com/questions/308846/how-to-find-total-filesize-grouped-by-extension
 
 # todo:
 # https://github.com/cykerway/complete-alias
