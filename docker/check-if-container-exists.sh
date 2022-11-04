@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # cron example
-# 0 2 * * * /root/check_gitlab_container.sh
+# 0 2 * * * /root/check_gitlab_container.sh> /dev/null 2>&1
 
 CONTAINER=gitlab
 docker inspect --format="{{.State.Running}}" $CONTAINER
