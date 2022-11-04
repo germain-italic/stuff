@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# cron example
+# 0 2 * * * /root/check_gitlab_container.sh
+
 CONTAINER=gitlab
 docker inspect --format="{{.State.Running}}" $CONTAINER
 if [ $? -eq 0 ];

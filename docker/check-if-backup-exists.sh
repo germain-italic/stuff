@@ -1,3 +1,11 @@
+#!/bin/bash
+
+# cron example
+# 0 1 * * * docker exec -t gitlab gitlab-ctl backup-etc CRON=1
+# 0 2 * * * /root/check_gitlab_container.sh
+# 0 3 * * * docker exec -t gitlab gitlab-rake gitlab:backup:create CRON=1
+# 0 12 * * * /root/check_gitlab_backup.sh
+
 DURATION_DAYS=1
 
 #Other Settings
