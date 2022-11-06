@@ -328,6 +328,10 @@ alias available='cd /etc/apache2/sites-available && ll'
 alias enabled='cd /etc/apache2/sites-available && ll'
 # go to vhosts root
 alias vhosts='cd /var/www/vhosts && ll'
+# show public key
+alias pubkey='cat ~/.ssh/id_rsa.pub'
+# show private key
+alias privkey='cat ~/.ssh/id_rsa'
 
 
 ###############
