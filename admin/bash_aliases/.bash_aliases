@@ -360,6 +360,16 @@ finduseragents () {
 # find user-agents in Apache logs
 alias logUA=finduseragents
 
+
+
+###################
+# group: firewall #
+###################
+
+alias ipL='iptables -nvL --line-numbers'
+alias ipS='iptables -S'
+
+
 # inspired by:
 # https://xy2z.io/posts/2020-syncing-aliases/
 # https://unix.stackexchange.com/a/132236
