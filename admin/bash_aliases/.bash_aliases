@@ -368,6 +368,8 @@ alias logUA=finduseragents
 
 alias ipL='iptables -nvL --line-numbers'
 alias ipS='iptables -S'
+alias ipsave='service netfilter-persistent save'
+alias netfilter='service netfilter-persistent save'
 
 
 # inspired by:
