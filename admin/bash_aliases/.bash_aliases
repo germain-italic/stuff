@@ -344,7 +344,7 @@ tailforward () {
 # tail -f with line breaks
 alias t=tailforward
 alias syslog='t /var/log/syslog'
-alias logmail='t /var/log/mail*'
+alias logmail='t /var/log/maillog'
 alias logweb='t /var/www/vhosts/system/*/logs/*access*log'
 alias logapache='t /var/log/apache2/**/*log'
 alias lognginx='t /var/log/nginx/**/*log'
