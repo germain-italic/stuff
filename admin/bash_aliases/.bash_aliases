@@ -372,6 +372,15 @@ alias ipsave='service netfilter-persistent save'
 alias netfilter='service netfilter-persistent save'
 
 
+###############
+# group: help #
+###############
+help () {
+    echo 'Reminder :' \
+    echo 'Pour trouver un dossier : find / -type d -name "*string*" -print' \
+    echo 'Pour trouver un fichier : find / -type f -name "*string*" -print' \
+}
+
 # inspired by:
 # https://xy2z.io/posts/2020-syncing-aliases/
 # https://unix.stackexchange.com/a/132236
