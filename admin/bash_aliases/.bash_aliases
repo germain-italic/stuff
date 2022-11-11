@@ -375,7 +375,7 @@ alias netfilter='service netfilter-persistent save'
 ###############
 # group: help #
 ###############
-help () {
+help_fn () {
     echo -e 'Syntaxe des commandes fréquemment utilisées :'
     echo -e 'Pour trouver un dossier : find / -type d -name "*string*" -print'
     echo -e 'Pour trouver un fichier : find / -type f -name "*string*" -print'
@@ -388,6 +388,8 @@ help () {
     echo -e 'Dumper à la date du jour : mysqldump -h host -u user -P 3306 base > /base-$(date +"%Y_%m_%d_%I_%M_%S").sql'
     echo -e ''
 }
+alias help='help_fn'
+
 
 # inspired by:
 # https://xy2z.io/posts/2020-syncing-aliases/
