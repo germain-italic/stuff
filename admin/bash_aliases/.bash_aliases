@@ -375,21 +375,19 @@ alias netfilter='service netfilter-persistent save'
 ###############
 # group: help #
 ###############
-fn_help () {
-    echo 'Syntaxe des commandes fréquemment utilisées :' \
-    echo 'Pour trouver un dossier : find / -type d -name "*string*" -print' \
-    echo 'Pour trouver un fichier : find / -type f -name "*string*" -print' \
-    echo '' \
-    echo 'Pour envoyer un mail : echo test | mail -s test support@italic.fr' \
-    echo "Via sendmail : echo -e \"Subject:Objet du mail\nTest $(date '+%d/%m/%Y %H:%M:%S')\" | /usr/sbin/sendmail germain@italic.fr" \
-    echo '' \
-    echo 'Importer un dump : mysql -h localhost -u user nom_de_la_base < dump.sql' \
-    echo 'Importer dump compressé en gzip : gzip - dc < dump.sql.gz | mysql -u user nom_de_la_base' \
-    echo 'Dumper à la date du jour : mysqldump -h host -u user -P 3306 base > /base-$(date +"%Y_%m_%d_%I_%M_%S").sql' \
-    echo ''
+help () {
+    echo -e 'Syntaxe des commandes fréquemment utilisées :' \
+    echo -e 'Pour trouver un dossier : find / -type d -name "*string*" -print' \
+    echo -e 'Pour trouver un fichier : find / -type f -name "*string*" -print' \
+    echo -e '' \
+    echo -e 'Pour envoyer un mail : echo test | mail -s test support@italic.fr' \
+    echo -e "Via sendmail : echo -e \"Subject:Objet du mail\nTest $(date '+%d/%m/%Y %H:%M:%S')\" | /usr/sbin/sendmail germain@italic.fr" \
+    echo -e '' \
+    echo -e 'Importer un dump : mysql -h localhost -u user nom_de_la_base < dump.sql' \
+    echo -e 'Importer dump compressé en gzip : gzip - dc < dump.sql.gz | mysql -u user nom_de_la_base' \
+    echo -e 'Dumper à la date du jour : mysqldump -h host -u user -P 3306 base > /base-$(date +"%Y_%m_%d_%I_%M_%S").sql' \
+    echo -e ''
 }
-# show various syntax reminders
-alias help=fn_help
 
 # inspired by:
 # https://xy2z.io/posts/2020-syncing-aliases/
