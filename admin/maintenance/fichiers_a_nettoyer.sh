@@ -37,7 +37,10 @@ file_size_bytes=`du -b /root/fichiers_a_nettoyer.log | cut -f1`
 
 if [ $file_size_bytes -gt 789 ]
     then
-       cat /root/fichiers_a_nettoyer.log | /usr/lib/sendmail -t
+       # pour sendmail
+       #cat /root/fichiers_a_nettoyer.log | /usr/lib/sendmail -t
+       # pour msmtp
+       #cat /root/fichiers_a_nettoyer.log | /usr/local/bin/msmtp support@$DOMAIN
     else
         #echo "pas de fichier"
         exit 0
