@@ -48,5 +48,5 @@ fi
 
 
 # crontab:
-# 0 3 * * * /root/fichiers_a_nettoyer.sh
+#0       7       *       *       *       (/root/fichiers_a_nettoyer.sh)  > /dev/null
 
