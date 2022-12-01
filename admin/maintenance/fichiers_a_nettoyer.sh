@@ -30,17 +30,17 @@ find $LOOKUP -size +100M -type f \( \
        ! -iname "*.mov" \
      \) -exec du -h {} \; >> /root/fichiers_a_nettoyer.log
 echo "</pre>" >> /root/fichiers_a_nettoyer.log
-
 echo "</html>" >> /root/fichiers_a_nettoyer.log
 
-file_size_bytes=`du -b /root/fichiers_a_nettoyer.log | cut -f1`
-
-if [ $file_size_bytes -gt 789 ]
+lines_of_text=19
+lines_in_log=`cat fichiers_a_nettoyer.log | wc -l`
+#echo $lines_in_log
+if [ $lines_in_log -gt $lines_of_text ]
     then
-       # pour sendmail
-       #cat /root/fichiers_a_nettoyer.log | /usr/lib/sendmail -t
-       # pour msmtp
-       #cat /root/fichiers_a_nettoyer.log | /usr/local/bin/msmtp support@$DOMAIN
+        # pour sendmail
+        cat /root/fichiers_a_nettoyer.log | /usr/lib/sendmail -t
+        # pour msmtp
+        #cat /root/fichiers_a_nettoyer.log | /usr/local/bin/msmtp support@$DOMAIN
     else
         #echo "pas de fichier"
         exit 0
@@ -49,3 +49,4 @@ fi
 
 # crontab:
 # 0 3 * * * /root/fichiers_a_nettoyer.sh
+
