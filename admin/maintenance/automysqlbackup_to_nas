@@ -1,0 +1,13 @@
+/etc/automysqlbackup/automysqlbackup.conf
+
+(...)
+CONFIG_postbackup='/root/rsync_automysqlbackup_nas.sh'
+
+
+/root/rsync_automysqlbackup_nas.sh
+
+/usr/bin/rsync -azu -e "ssh -i /user/.ssh/id_rsa" /var/automysqlbackup server_automysqlbackup@nas1:/var/services/homes/server_automysqlbackup
+/usr/bin/rsync -azu -e "ssh -i /user/.ssh/id_rsa" /var/automysqlbackup server_automysqlbackup@nas2:/var/services/homes/server_automysqlbackup
+
+
+https://discourse/t/rsync-sans-mot-de-passe-vers-un-nas-synology/932
