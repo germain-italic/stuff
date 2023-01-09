@@ -8,7 +8,11 @@ case $- in
 esac
 
 # Change the version of this file after editing it
-export VERSION_ALIASES=20
+export VERSION_ALIASES=21
+
+# Change system messages locale
+export LANG=en_US.UTF-8
+export LANGUAGE=en
 
 # My prefered editor
 export EDITOR="nano"
